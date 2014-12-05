@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20141205163036) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "pubs", force: true do |t|
     t.string   "name"
     t.float    "latitude"
@@ -26,8 +29,8 @@ ActiveRecord::Schema.define(version: 20141205163036) do
     t.integer "route_id"
   end
 
-  add_index "pubs_routes", ["pub_id", "route_id"], name: "index_pubs_routes_on_pub_id_and_route_id"
-  add_index "pubs_routes", ["route_id"], name: "index_pubs_routes_on_route_id"
+  add_index "pubs_routes", ["pub_id", "route_id"], name: "index_pubs_routes_on_pub_id_and_route_id", using: :btree
+  add_index "pubs_routes", ["route_id"], name: "index_pubs_routes_on_route_id", using: :btree
 
   create_table "routes", force: true do |t|
     t.string   "name"
