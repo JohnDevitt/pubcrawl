@@ -8,11 +8,7 @@ Rails.application.routes.draw do
   end
 
 
-  resources :pubs do
-    collection do
-      get 'populate_db'
-    end
-  end
+  resources :pubs
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
