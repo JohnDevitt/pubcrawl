@@ -107,6 +107,10 @@ class RoutesController < ApplicationController
     @search = Pub.search(params[:q])
     @pubs = @search.result
 
+    puts "--------------------------------------------------"
+    puts @pubs.inspect
+    puts "--------------------------------------------------"
+
     respond_to do |format|
       # If our search returns a single pub
       if(@pubs.size == 1)
