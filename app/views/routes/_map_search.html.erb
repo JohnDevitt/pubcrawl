@@ -1,0 +1,20 @@
+<div class="panel panel-default">
+		<div class="panel-heading"><h4>Now, Add some pubs</h4></div>
+  		<div class="panel-body">
+			<%= search_form_for @search, :url => {:action => "add_pub_to_list"}, :remote => true do |f| %>
+				<div class = "row">
+					<div class = "form-group col-md-3">
+						<%= f.text_field :name_cont, class: "form-control", placeholder: "Search for a pub" %>
+					</div>
+					<div class = "form-group col-md-3">
+						<%= f.submit "Search", class: "btn btn-primary" %>
+					</div>
+					<%= f.hidden_field :pubList_id_eq, :value =>@pubList %>
+				</div>
+			<% end %>
+			</br>
+			<div id = "map_container">
+				<%= render partial:'map'%>
+			</div>
+  		</div>
+	</div>

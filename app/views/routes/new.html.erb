@@ -1,0 +1,64 @@
+<div class = "container">
+
+	<div class="panel panel-default">
+		<div class="panel-heading"><h4>First, Add some pubs</h4></div>
+  		<div class="panel-body">
+			<%= search_form_for @search, :url => {:action => "add_pub_to_list"}, :remote => true do |f| %>
+				<div class = "row">
+					<div class = "form-group col-md-3">
+						<%= f.text_field :name_cont, class: "form-control", placeholder: "Search for a pub" %>
+					</div>
+					<div class = "form-group col-md-3">
+						<%= f.submit "Search", class: "btn btn-primary" %>
+					</div>
+          <div class = "form col-md-3">
+          </div>
+          <div class = "form col-md-3">
+            <div id = "pub_count"><h4>Pub Count: 0</h4></div>
+          </div>
+					<%= f.hidden_field :pubList_id_eq, :value =>@pubList %>
+				</div>
+			<% end %>
+			</br>
+			<div id = "map_container">
+				<%= render partial:'map'%>
+			</div>
+  		</div>
+	</div>
+
+	<!--<div class="panel panel-default">
+		<div class="panel-heading"><h4>Finally, make the rules</h4></div>
+  		<div class="panel-body">
+  			<%= render 'rules/form' %>
+  		</div>
+  	</div>-->
+
+    <div class="panel panel-default">
+    <div class="panel-heading"><h4>Finally, Name your route</h4></div>
+      <div class="panel-body">
+      <%= form_for(@route) do |outer| %>
+          <% if @route.errors.any? %>
+            <div id="error_explanation">
+                <h2><%= pluralize(@route.errors.count, "error") %> prohibited this route from being saved:</h2>
+                <ul>
+                  <% @route.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                  <% end %>
+                </ul>
+            </div>
+          <% end %>
+          <div class = "row">
+            <div class = "form-group col-md-3">
+                <%= outer.text_field :name, class: "form-control", placeholder:"Give your route a name" %>
+            </div>
+            <%= outer.hidden_field :pubList_id_eq, :value =>@pubList %>
+            <div class = "form-group col-md-2">
+                <%= outer.submit class: "btn btn-primary", id: "main_submit_button", :disabled => "true"%>
+            </div>
+          </div>
+      <% end %>
+    </div>
+  </div>
+
+  	<%= link_to 'Back', routes_path %>
+</div>

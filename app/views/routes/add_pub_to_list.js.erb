@@ -1,0 +1,19 @@
+//views/items/from_category.js.erb
+if(<%= raw @hash.to_json %> == "Pub not found, maybe you would like to add this pub to our database?") {
+	alert(<%= raw @hash.to_json %>);
+} 
+else if(<%= raw @hash.to_json %> == "We found more then one pub with that name!") {
+	alert(<%= raw @hash.to_json %>);
+}
+else if(<%= raw @hash.to_json %> == "That pub's already in your list!") {
+	alert(<%= raw @hash.to_json %>);
+}
+else{
+	handler.addMarker(<%=raw @hash.to_json %>);
+	document.getElementById('q_pubList_id_eq').value = ('<%= @pubList.inspect %>');
+	document.getElementById('route_pubList_id_eq').value = ('<%= @pubList.inspect %>');
+	document.getElementById('pub_count').innerHTML = '<h4>Pub Count: <%= @pubList.size %></h4>';
+	if(<%= @pubList.size %> >= 12) {
+		document.getElementById('main_submit_button').disabled = false;
+	}
+}

@@ -1,0 +1,24 @@
+
+</br>
+<%= form_for(@pub) do |f| %>
+  <% if @pub.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pub.errors.count, "error") %> prohibited this pub from being saved:</h2>
+
+      <ul>
+      <% @pub.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="form-group">
+      <div class = "row">
+      <div class = "col-md-6"></div>
+      <div class = "col-md-2"><%= f.text_field :name, class: "form-control", placeholder: "Add New Pub"  %></div>
+      <div class = "col-md-2"><%= f.text_field :streetName, class: "form-control", placeholder: "StreetName"  %></div>
+      <div class = "col-md-2"><%= f.submit class: "btn btn-success btn-block pull-right"  %></div>
+    </div>
+    </div>
+<% end %>
