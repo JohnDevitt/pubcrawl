@@ -61,7 +61,6 @@ GEM
     pg (0.17.1)
     polyamorous (1.1.0)
       activerecord (>= 3.0)
-    populator (1.0.0)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -131,7 +130,6 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   pg
-  populator
   rails (= 4.1.6)
   ransack
   sass-rails (~> 4.0.3)
